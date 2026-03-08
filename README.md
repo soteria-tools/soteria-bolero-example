@@ -15,6 +15,7 @@ It contains a single function, `buggy_add`, with a deliberately planted bug: for
 
 ```sh
 cargo install soteria --git https://github.com/soteria-tools/cargo-soteria.git
+cargo soteria setup
 ```
 
 If you are running on a remote VM or a non-ARM machine, you will need to [install Soteria from source](https://github.com/soteria-tools/soteria#installing-from-source). The source installation instructions also cover installing the required `obol` frontend.
