@@ -1,0 +1,26 @@
+name: Soteria
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  soteria:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install soteria
+        run: cargo install soteria --git https://github.com/soteria-tools/cargo-soteria.git
+
+      - name: Install cargo-bolero
+        run: cargo install --git https://github.com/soteria-tools/bolero --rev bdcfbb840fd1022220d150fb9ced192af182ad06 cargo-bolero
+
+      - name: Run tests in Soteria mode
+        run: cargo bolero test fuzz_add -e soteria
