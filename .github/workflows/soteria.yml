@@ -21,6 +21,8 @@ jobs:
 
       - name: Set up soteria
         run: cargo soteria setup
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install cargo-bolero
         run: cargo install --git https://github.com/soteria-tools/bolero --rev bdcfbb840fd1022220d150fb9ced192af182ad06 cargo-bolero
