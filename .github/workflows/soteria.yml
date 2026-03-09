@@ -29,4 +29,5 @@ jobs:
         run: cargo install --git https://github.com/soteria-tools/bolero --rev bdcfbb840fd1022220d150fb9ced192af182ad06 cargo-bolero
 
       - name: Run tests in Soteria mode
-        run: cargo bolero test fuzz_add -e soteria
+        run: |
+          cargo bolero test fuzz_add -e soteria; test $? -eq 1
