@@ -30,4 +30,11 @@ jobs:
 
       - name: Run tests in Soteria mode
         run: |
-          cargo bolero test fuzz_add -e soteria; test $? -eq 1
+          set +e
+          cargo bolero test fuzz_add -e soteria
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 1 ]; then
+            echo "Expected exit code 1 for the test, but got $EXIT_CODE"
+            exit 1
+          fi
+          echo "✓ test passed (found bug as expected)"
